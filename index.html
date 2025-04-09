@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einkaufsliste</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #333333; /* Dunkelgrau */
+            font-family: 'Poppins', sans-serif;
+            color: white; /* Textfarbe auf weiß setzen */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Style */
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-top: 20px;
+        }
+
+        /* Input Style */
+        input {
+            background-color: #444444; /* Eingabefeld Hintergrund */
+            color: white; /* Textfarbe */
+            border: none;
+            padding: 10px 20px; /* Gleiche Größe wie der Button */
+            font-size: 16px;
+            width: 300px; /* Breite des Eingabefelds */
+            border-radius: 5px; /* Abgerundete Ecken */
+            margin: 10px auto;
+            display: block; /* Zentriert das Input-Feld */
+        }
+
+        /* Gemeinsame Button Styles */
+        button {
+            background-color: #007bff; /* Blau */
+            color: white; /* Weißer Text */
+            border: none;
+            padding: 10px 20px; /* Gleiche Größe wie das Input-Feld */
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px; /* Abgerundete Ecken */
+            transition: background-color 0.3s ease; /* Sanfte Übergänge */
+            font-weight: bold; /* Schrift im Button fett machen */
+            display: block; /* Button zentrieren */
+            margin: 10px auto; /* Abstand und zentrieren */
+            width: 200px; /* Schmalere Breite */
+        }
+
+        /* Button zum Leeren der Liste */
+        #clearBtn {
+            background-color: #dc3545; /* Rotes Button für "Leeren" */
+        }
+
+        #clearBtn:hover {
+            background-color: #c82333; /* Dunkleres Rot beim Hover */
+        }
+
+        /* Hover-Effekt */
+        button:hover {
+            background-color: #0056b3; /* Dunkleres Blau beim Hover */
+        }
+
+        /* Einkaufsliste */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            width: 80%; /* Liste nimmt 80% der Breite ein */
+        }
+
+        li {
+            background-color: #444444;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        /* Durchgestrichener Text bei abgehakten Elementen */
+        li.done {
+            text-decoration: line-through; /* Text durchstreichen */
+            color: #888888; /* Grau für den durchgestrichenen Text */
+        }
+
+        /* Haken-Icon */
+        li.done::after {
+            content: "✔"; /* Grüner Haken */
+            color: green;
+            margin-left: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            input, button {
+                width: 80%; /* Buttons und Eingabefeld nehmen 80% der Breite ein */
+                font-size: 14px; /* Kleinere Schriftgröße */
+                padding: 12px 20px; /* Etwas mehr Padding */
+            }
+
+            h1 {
+                font-size: 24px; /* Etwas kleinere Schrift für die Überschrift */
+            }
+        }
+
+        @media (max-width: 400px) {
+            input, button {
+                width: 100%; /* Eingabefeld und Button nehmen 100% der Breite ein */
+                font-size: 12px; /* Noch kleinere Schriftgröße */
+            }
+
+            h1 {
+                font-size: 20px; /* Noch kleinere Schrift für die Überschrift */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Deine Einkaufsliste</h1>
+    <input type="text" id="input" placeholder="Hier schreiben">
+    <button id="saveBtn">hinzufügen</button>
+    <ul id="liste"></ul>
+
+    <!-- Button zum Leeren der Liste jetzt unter der Liste -->
+    <button id="clearBtn">Liste leeren</button>
+
+    <script>
+        const input = document.getElementById("input");
+        const saveButton = document.getElementById("saveBtn");
+        const clearButton = document.getElementById("clearBtn");
+        const ul = document.getElementById("liste");
+
+        // Bestehende Einträge laden oder leere Liste starten
+        let items = JSON.parse(localStorage.getItem("meineListe")) || [];
+
+        // Liste im HTML anzeigen
+        function aktualisiereListe() {
+            ul.innerHTML = "";
+            items.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.textContent = item;
+
+                // Haken für erledigte Elemente hinzufügen
+                li.addEventListener("click", () => {
+                    li.classList.toggle("done"); // Fügt oder entfernt die "done"-Klasse
+                });
+
+                // Rechtsklick-Option zum Löschen von Einträgen
+                li.addEventListener("contextmenu", (e) => {
+                    e.preventDefault();
+                    const confirmDelete = window.confirm("Möchtest du diesen Artikel löschen?");
+                    if (confirmDelete) {
+                        items.splice(index, 1); // Artikel aus dem Array entfernen
+                        localStorage.setItem("meineListe", JSON.stringify(items));
+                        aktualisiereListe(); // Liste neu rendern
+                    }
+                });
+
+                ul.appendChild(li);
+            });
+        }
+
+        // Direkt beim Start laden
+        aktualisiereListe();
+
+        // Neues Element hinzufügen
+        saveButton.addEventListener("click", () => {
+            const text = input.value.trim();
+            if (text === "") {
+                alert("Bitte gib einen Artikel ein.");
+            } else {
+                items.push(text);
+                localStorage.setItem("meineListe", JSON.stringify(items));
+                input.value = "";
+                aktualisiereListe();
+            }
+        });
+
+        // Liste leeren mit Bestätigung
+        clearButton.addEventListener("click", () => {
+            const confirmClear = window.confirm("Möchtest du die Liste wirklich leeren?");
+            if (confirmClear) {
+                items = []; // Leere die Array
+                localStorage.setItem("meineListe", JSON.stringify(items)); // Leere Liste speichern
+                aktualisiereListe(); // Aktualisiere die Anzeige
+            }
+        });
+    </script>
+</body>
+</html>
