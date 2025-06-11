@@ -3,194 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Einkaufsliste</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #333333; /* Dunkelgrau */
-            font-family: 'Poppins', sans-serif;
-            color: white; /* Textfarbe auf weiß setzen */
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header Style */
-        h1 {
-            text-align: center;
-            font-size: 32px;
-            margin-top: 20px;
-        }
-
-        /* Input Style */
-        input {
-            background-color: #444444; /* Eingabefeld Hintergrund */
-            color: white; /* Textfarbe */
-            border: none;
-            padding: 10px 20px; /* Gleiche Größe wie der Button */
-            font-size: 16px;
-            width: 300px; /* Breite des Eingabefelds */
-            border-radius: 5px; /* Abgerundete Ecken */
-            margin: 10px auto;
-            display: block; /* Zentriert das Input-Feld */
-        }
-
-        /* Gemeinsame Button Styles */
-        button {
-            background-color: #007bff; /* Blau */
-            color: white; /* Weißer Text */
-            border: none;
-            padding: 10px 20px; /* Gleiche Größe wie das Input-Feld */
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px; /* Abgerundete Ecken */
-            transition: background-color 0.3s ease; /* Sanfte Übergänge */
-            font-weight: bold; /* Schrift im Button fett machen */
-            display: block; /* Button zentrieren */
-            margin: 10px auto; /* Abstand und zentrieren */
-            width: 200px; /* Schmalere Breite */
-        }
-
-        /* Button zum Leeren der Liste */
-        #clearBtn {
-            background-color: #dc3545; /* Rotes Button für "Leeren" */
-        }
-
-        #clearBtn:hover {
-            background-color: #c82333; /* Dunkleres Rot beim Hover */
-        }
-
-        /* Hover-Effekt */
-        button:hover {
-            background-color: #0056b3; /* Dunkleres Blau beim Hover */
-        }
-
-        /* Einkaufsliste */
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px auto;
-            width: 80%; /* Liste nimmt 80% der Breite ein */
-        }
-
-        li {
-            background-color: #444444;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-        }
-
-        /* Durchgestrichener Text bei abgehakten Elementen */
-        li.done {
-            text-decoration: line-through; /* Text durchstreichen */
-            color: #888888; /* Grau für den durchgestrichenen Text */
-        }
-
-        /* Haken-Icon */
-        li.done::after {
-            content: "✔"; /* Grüner Haken */
-            color: green;
-            margin-left: 10px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            input, button {
-                width: 80%; /* Buttons und Eingabefeld nehmen 80% der Breite ein */
-                font-size: 14px; /* Kleinere Schriftgröße */
-                padding: 12px 20px; /* Etwas mehr Padding */
-            }
-
-            h1 {
-                font-size: 24px; /* Etwas kleinere Schrift für die Überschrift */
-            }
-        }
-
-        @media (max-width: 400px) {
-            input, button {
-                width: 100%; /* Eingabefeld und Button nehmen 100% der Breite ein */
-                font-size: 12px; /* Noch kleinere Schriftgröße */
-            }
-
-            h1 {
-                font-size: 20px; /* Noch kleinere Schrift für die Überschrift */
-            }
-        }
-    </style>
-</head>
+    <title>Dein Tisch – Perfektioniere Dein Setup</title>
+    <link rel="stylesheet" href="styles.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
 <body>
-    <h1>Deine Einkaufsliste</h1>
-    <input type="text" id="input" placeholder="Hier schreiben">
-    <button id="saveBtn">hinzufügen</button>
-    <ul id="liste"></ul>
 
-    <!-- Button zum Leeren der Liste jetzt unter der Liste -->
-    <button id="clearBtn">Liste leeren</button>
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="img/logo.svg" alt="Dein Tisch Logo">
+                </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#gaming-tische">Gaming Tische</a></li>
+                    <li><a href="#hoehenverstellbar">Höhenverstellbar</a></li>
+                    <li><a href="#warum-uns">Warum uns?</a></li>
+                    <li><a href="#zubehoer">Zubehör</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <a href="#konfigurator" class="btn btn-primary nav-cta">Deinen Tisch konfigurieren</a>
+        </div>
+    </header>
 
-    <script>
-        const input = document.getElementById("input");
-        const saveButton = document.getElementById("saveBtn");
-        const clearButton = document.getElementById("clearBtn");
-        const ul = document.getElementById("liste");
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-headline">Perfektioniere Dein Setup.</h1>
+                <p class="hero-subline">Ergonomie und Stil vereint. Für Höchstleistungen und unbegrenzten Komfort.</p>
+                <a href="#produkte" class="btn btn-primary hero-cta">Tische entdecken</a>
+            </div>
+            <div class="hero-media">
+                <img src="img/hero-gaming-table.jpg" alt="Gaming Tisch im Setup" class="hero-image">
+                </div>
+        </section>
 
-        // Bestehende Einträge laden oder leere Liste starten
-        let items = JSON.parse(localStorage.getItem("meineListe")) || [];
+        <section class="product-categories" id="produkte">
+            <div class="container">
+                <h2 class="section-headline">Entdecke unsere Tische</h2>
 
-        // Liste im HTML anzeigen
-        function aktualisiereListe() {
-            ul.innerHTML = "";
-            items.forEach((item, index) => {
-                const li = document.createElement("li");
-                li.textContent = item;
+                <div class="product-highlight gaming-table-highlight" id="gaming-tische">
+                    <div class="product-media">
+                        <img src="img/gaming-table-model.jpg" alt="High-End Gaming Tisch" class="product-image">
+                        </div>
+                    <div class="product-info">
+                        <span class="product-tagline">Für eSports und Freizeit-Gamer</span>
+                        <h3 class="product-title">Die ultimativen Gaming Tische</h3>
+                        <p class="product-description">Unsere Gaming-Tische sind für maximale Performance und unübertroffenen Komfort konzipiert. Robuste Konstruktion, intelligentes Kabelmanagement und ergonomisches Design für lange Sessions.</p>
+                        <ul class="features-list">
+                            <li><span class="feature-icon">🎮</span> Robuste & kratzfeste Oberfläche</li>
+                            <li><span class="feature-icon">🔌</span> Integriertes Kabelmanagement</li>
+                            <li><span class="feature-icon">🎧</span> Headset- & Getränkehalterung</li>
+                            <li><span class="feature-icon">⚙️</span> Optionale RGB-Beleuchtung</li>
+                        </ul>
+                        <a href="#" class="btn btn-secondary">Mehr über Gaming Tische</a>
+                    </div>
+                </div>
 
-                // Haken für erledigte Elemente hinzufügen
-                li.addEventListener("click", () => {
-                    li.classList.toggle("done"); // Fügt oder entfernt die "done"-Klasse
-                });
+                <div class="product-highlight adjustable-table-highlight" id="hoehenverstellbar">
+                    <div class="product-info">
+                        <span class="product-tagline">Flexibilität für Arbeit und Spiel</span>
+                        <h3 class="product-title">Ergonomische Höhenverstellbare Tische</h3>
+                        <p class="product-description">Wechsle nahtlos zwischen Sitzen und Stehen. Unsere höhenverstellbaren Tische fördern Gesundheit und Produktivität, perfekt für jeden Workflow und jedes Setup.</p>
+                        <ul class="features-list">
+                            <li><span class="feature-icon">⬆️⬇️</span> Sanfte elektrische Höhenverstellung</li>
+                            <li><span class="feature-icon">📏</span> Großer Höhenbereich (z.B. 60-125cm)</li>
+                            <li><span class="feature-icon">💡</span> Speicherplätze für Lieblingshöhen</li>
+                            <li><span class="feature-icon">💪</span> Hohe Tragkraft und Stabilität</li>
+                        </ul>
+                        <a href="#" class="btn btn-secondary">Mehr über Höhenverstellbare Tische</a>
+                    </div>
+                    <div class="product-media">
+                        <img src="img/adjustable-table-in-use.jpg" alt="Person arbeitet am höhenverstellbaren Tisch" class="product-image">
+                        </div>
+                </div>
+            </div>
+        </section>
 
-                // Rechtsklick-Option zum Löschen von Einträgen
-                li.addEventListener("contextmenu", (e) => {
-                    e.preventDefault();
-                    const confirmDelete = window.confirm("Möchtest du diesen Artikel löschen?");
-                    if (confirmDelete) {
-                        items.splice(index, 1); // Artikel aus dem Array entfernen
-                        localStorage.setItem("meineListe", JSON.stringify(items));
-                        aktualisiereListe(); // Liste neu rendern
-                    }
-                });
+        <section class="why-us-section">
+            <div class="container">
+                <h2 class="section-headline">Warum Tische von uns?</h2>
+                <div class="advantages-grid">
+                    <div class="advantage-item">
+                        <span class="advantage-icon">🏆</span>
+                        <h3>Premium Qualität</h3>
+                        <p>Wir verwenden nur die besten Materialien für Langlebigkeit und Stabilität.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <span class="advantage-icon">🧠</span>
+                        <h3>Intelligentes Design</h3>
+                        <p>Durchdachte Lösungen für Kabelmanagement und Ergonomie.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <span class="advantage-icon">✨</span>
+                        <h3>Zeitlose Ästhetik</h3>
+                        <p>Minimalistisches Design, das sich nahtlos in jedes Setup einfügt.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <span class="advantage-icon">🌍</span>
+                        <h3>Nachhaltige Produktion</h3>
+                        <p>Verantwortungsvolle Herstellung mit Blick auf die Umwelt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                ul.appendChild(li);
-            });
-        }
+        <section class="configurator-teaser" id="konfigurator">
+            <div class="container">
+                <h2 class="section-headline">Dein Traumtisch wartet.</h2>
+                <p>Gestalte jetzt deinen individuellen Gaming- oder höhenverstellbaren Tisch. Wähle Farben, Größen und Zubehör passend zu deinem Stil.</p>
+                <a href="#" class="btn btn-primary large-btn">Tisch jetzt konfigurieren</a>
+            </div>
+        </section>
 
-        // Direkt beim Start laden
-        aktualisiereListe();
+        <section class="accessories-section" id="zubehoer">
+            <div class="container">
+                <h2 class="section-headline">Perfektioniere Dein Setup mit Zubehör</h2>
+                <div class="accessories-grid">
+                    <div class="accessory-item">
+                        <img src="img/accessory-cable-management.jpg" alt="Kabelmanagement Lösung">
+                        <h3>Kabelmanagement</h3>
+                        <p>Halte dein Setup ordentlich und kabelfrei.</p>
+                        <a href="#" class="btn btn-text">Mehr erfahren</a>
+                    </div>
+                    <div class="accessory-item">
+                        <img src="img/accessory-monitor-arm.jpg" alt="Monitorarm">
+                        <h3>Monitorarme</h3>
+                        <p>Optimiere deine Bildschirmposition für mehr Komfort.</p>
+                        <a href="#" class="btn btn-text">Mehr erfahren</a>
+                    </div>
+                    <div class="accessory-item">
+                        <img src="img/accessory-led-strip.jpg" alt="LED Beleuchtung">
+                        <h3>RGB-Beleuchtung</h3>
+                        <p>Setze dein Setup stimmungsvoll in Szene.</p>
+                        <a href="#" class="btn btn-text">Mehr erfahren</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Neues Element hinzufügen
-        saveButton.addEventListener("click", () => {
-            const text = input.value.trim();
-            if (text === "") {
-                alert("Bitte gib einen Artikel ein.");
-            } else {
-                items.push(text);
-                localStorage.setItem("meineListe", JSON.stringify(items));
-                input.value = "";
-                aktualisiereListe();
-            }
-        });
+        <section class="final-cta-section">
+            <div class="container">
+                <h2 class="section-headline">Bereit für dein Upgrade?</h2>
+                <p>Investiere in Ergonomie, Stil und Produktivität.</p>
+                <a href="#produkte" class="btn btn-primary large-btn">Alle Tische ansehen</a>
+            </div>
+        </section>
 
-        // Liste leeren mit Bestätigung
-        clearButton.addEventListener("click", () => {
-            const confirmClear = window.confirm("Möchtest du die Liste wirklich leeren?");
-            if (confirmClear) {
-                items = []; // Leere die Array
-                localStorage.setItem("meineListe", JSON.stringify(items)); // Leere Liste speichern
-                aktualisiereListe(); // Aktualisiere die Anzeige
-            }
-        });
-    </script>
+    </main>
+
+    <footer class="main-footer" id="kontakt">
+        <div class="container">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Produkte</h4>
+                    <ul>
+                        <li><a href="#gaming-tische">Gaming Tische</a></li>
+                        <li><a href="#hoehenverstellbar">Höhenverstellbare Tische</a></li>
+                        <li><a href="#zubehoer">Zubehör</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Unternehmen</h4>
+                    <ul>
+                        <li><a href="#warum-uns">Über uns</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Presse</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Versand & Lieferung</a></li>
+                        <li><a href="#">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dein Tisch. Alle Rechte vorbehalten.</p>
+                <div class="social-media">
+                    <a href="#" aria-label="Facebook"><img src="img/icon-facebook.svg" alt="Facebook"></a>
+                    <a href="#" aria-label="Instagram"><img src="img/icon-instagram.svg" alt="Instagram"></a>
+                    <a href="#" aria-label="YouTube"><img src="img/icon-youtube.svg" alt="YouTube"></a>
+                    </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
